@@ -1,6 +1,8 @@
 ZiTALK - v4
 -------------
 
+Code: https://github.com/ZiTAL/zitalk
+
 Contact: zitalman@gmail.com
 License: GPL 3.0
 
