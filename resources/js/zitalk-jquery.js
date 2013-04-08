@@ -195,6 +195,7 @@ var zitalk =
 		$('form').on('submit', function(e)
 		{
 			e.preventDefault();
+			return false;
 		});
 		this.deleteSession();
 		this.login();			
