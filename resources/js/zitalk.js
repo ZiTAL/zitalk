@@ -1,204 +1,216 @@
 var zitalk = 
 {
 	max: 0,
+	show: function(element)
+	{
+		console.log('show');
+		element.style.display = 'block';
+	},
+	hide: function(element)
+	{
+		console.log('hide');
+		element.style.display = 'none';
+	},
 	deleteSession: function()
 	{
-		$.ajax(
-		{
-			async: false,
-			type: 'POST',
-			url: "?"+Math.random()+"="+Math.random(),
-			data:
-			{
-				action: 'deleteSession',
-			}
-		});			
+		console.log('deleteSession');
+		var ajax = new zajax();
+		//ajax.async = false;
+		ajax.page = "?"+Math.random()+"="+Math.random();
+		ajax.query = "action=deleteSession";
+		ajax.request();
+		return false;
 	},
 	login: function()
 	{
-		$('.login button').on('click', function(e)
+		console.log('login');
+		var self = this;
+
+		var container = document.getElementsByClassName('login')[0];
+		var button = container.getElementsByTagName('button')[0];
+		button.onclick = function()
 		{
-			e.preventDefault();
-			var data = $('.login input').val();
-			$.ajax(
+			var data = container.getElementsByTagName('input')[0].value;
+
+			var ajax = new zajax();
+			//ajax.async = false;
+			ajax.page = "?"+Math.random()+"="+Math.random();
+			ajax.query = "action=login&data="+encodeURIComponent(data);
+			ajax.onComplete = function(res)
 			{
-				async: false,
-				type: 'POST',
-				url: "?"+Math.random()+"="+Math.random(),
-				data:
+				if(res=='true')
 				{
-					action: 'login',
-					data: data
-				},
-				success: function(res)
-				{
-					if(res=='true')
-					{
-						$('.login').hide();
-						$('.message').show();
-						$('.message span').first().text("Welcome "+data+"!");
-						$('.message input').focus();
-					}
-					else
-						window.alert('USER ONLINE');
+					self.hide(container);
+					var message = document.getElementsByClassName('message')[0];
+					self.show(message);
+
+					var span = message.getElementsByTagName('span')[0];
+					var text = document.createTextNode("Welcome "+data+"!");
+					span.appendChild(text);
+					var input = message.getElementsByTagName('input')[0];
+					input.focus();
 				}
-			});
-		});
+				else
+					window.alert('USER ONLINE');
+			};
+			ajax.request();						
+		};
 	},
 	logout: function()
 	{
-		$('.message .logout').on('click', function(e)
+		console.log('logout');
+		var self = this;
+
+		var message = document.getElementsByClassName('message')[0];		
+		var button = message.getElementsByClassName('logout')[0];
+		button.onclick = function()
 		{
-			e.preventDefault();	
-			var input = $('.message input');
-			$.ajax(
+			var input = message.getElementsByTagName('input')[0];
+
+			var ajax = new zajax();
+			//ajax.async = false;
+			ajax.page = "?"+Math.random()+"="+Math.random();
+			ajax.query = "action=logout";
+			ajax.onComplete = function()
 			{
-				async: false,
-				type: 'POST',
-				url: "?"+Math.random()+"="+Math.random(),
-				data:
-				{
-					action: 'logout',
-				},
-				success: function()
-				{
-					$('.message').hide();
-					$('.message input').val('');
-					$('.login').show();
-					$('.login input').focus();
-				}
-			});				
-		});	
+				self.hide(message);
+				input.value = '';
+				var login = document.getElementsByClassName('login')[0];
+				var input2 = login.getElementsByTagName('input')[0];
+				self.show(login);
+				input2.focus();
+			};
+			ajax.request();			
+		};
 	},
 	send: function()
 	{
-		$('.message .send').on('click', function(e)
+		console.log('send');
+		var message = document.getElementsByClassName('message')[0];
+		var button = message.getElementsByClassName('send')[0];
+
+		button.onclick = function()
 		{
-			e.preventDefault();	
-			var input = $('.message input');
-			$.ajax(
+			var input = message.getElementsByTagName('input')[0];			
+
+			var ajax = new zajax();
+			//ajax.async = false;
+			ajax.page = "?"+Math.random()+"="+Math.random();
+			ajax.query = "action=write&data="+encodeURIComponent(input.value);
+			ajax.onComplete = function()
 			{
-				async: false,
-				type: 'POST',
-				url: "?"+Math.random()+"="+Math.random(),
-				data:
-				{
-					action: 'write',
-					data: input.val(),
-				},
-				success: function()
-				{
-					input.val('');
-					input.focus();
-				}
-			});				
-		});
+				input.value = '';
+				input.focus();
+			};
+			ajax.request();
+		};
 	},
 	read: function(id)
 	{
+		console.log('read');
 		var self = this;
 
 		if(typeof(id)=='undefined')
 			id = 0;
-		$.ajax(
+
+		var ajax = new zajax();
+		//ajax.async = false;
+		ajax.response = 'json',
+		ajax.page = "?"+Math.random()+"="+Math.random();
+		ajax.query = "action=read&data="+id;
+		ajax.onComplete = function(res)
 		{
-			async: false,
-			type: 'POST',
-			dataType: 'json',
-			url: "?"+Math.random()+"="+Math.random(),
-			data:
+			var tbody = document.getElementsByTagName('tbody')[0];
+
+			for(var i in res)
 			{
-				action: 'read',
-				data: id
-			},
-			success: function(res)
-			{
-				var tbody = $('tbody');
+				self.max = res[i]['id'];
 
-				for(var i in res)
-				{
-					self.max = res[i]['id'];
+				var tr = document.createElement('tr');
+				var td = document.createElement('td');
+				var text = document.createTextNode(res[i]['name']);
 
-					var tr = $('<tr></tr>');
-					var td = $('<td></td>');
+				td.appendChild(text);
+				tr.appendChild(td);
 
-					td.append(res[i]['name']);
-					tr.append(td);
+				var td = document.createElement('td');			
+				var text = document.createTextNode(res[i]['comment']);
 
-					var td = $('<td></td>');						
+				td.appendChild(text);
+				tr.appendChild(td);
 
-					td.append(res[i]['comment']);
-					tr.append(td);
-
-					tbody.prepend(tr);
-				}
+				if(tbody.hasChildNodes())
+					tbody.insertBefore(tr, tbody.childNodes[0]);
+				else
+					tbody.appendChild(tr);
 			}
-		});
+		};
+		ajax.request();
 	},
 	maxId: function()
 	{
+		console.log('maxId');
 		var self = this;
 
-		$.ajax(
+		var ajax = new zajax();
+		//ajax.async = false;
+		ajax.page = "?"+Math.random()+"="+Math.random();
+		ajax.query = "action=maxId&data="+self.max;
+		ajax.onComplete = function(res)
 		{
-			async: false,
-			type: 'POST',
-			url: "?"+Math.random()+"="+Math.random(),
-			data:
+			if(res>self.max)
 			{
-				action: 'maxId',
-				data: self.max
-			},
-			success: function(res)
-			{
-				if(res>self.max)
-				{
-					self.read(self.max);
-					self.max = res;
-				}
-				window.setTimeout(function()
-				{
-					self.maxId();
-				}, 2 * 1000);
+				self.read(self.max);
+				self.max = res;
 			}
-		});
+			window.setTimeout(function()
+			{
+				self.maxId();
+			}, 2 * 1000);
+		};
+		ajax.request();
 	},
 	readOu: function()
 	{
+		console.log('readOu');
 		var self = this;
 
-		$.ajax(
+		var ajax = new zajax();
+		//ajax.async = false;
+		ajax.page = "?"+Math.random()+"="+Math.random();
+		ajax.query = "action=readOu";
+		ajax.onComplete = function()
 		{
-			async: false,
-			type: 'POST',
-			url: "?"+Math.random()+"="+Math.random(),
-			data:
+			window.setTimeout(function()
 			{
-				action: 'readOu'
-			},
-			success: function()
-			{
-				window.setTimeout(function()
-				{
-					self.readOu();
-				}, 5 * 1000);	
-			}
-		});	
+				self.readOu();
+			}, 5 * 1000);	
+		};
+		ajax.request();
 	},
 	main: function()
 	{
+		console.log('main');
 		var self = this;
 
-		$('tbody').empty();
-		$('form').on('submit', function(e)
+		var forms = document.getElementsByTagName('form');
+		for(var i in forms)
 		{
-			e.preventDefault();
-		});
-		this.deleteSession();
-		this.login();			
-		this.logout();			
-		this.send();			
-		this.read();
+			forms[i].onsubmit = function()
+			{
+				return false;
+			};
+		}
+
+		var tbody = document.getElementsByTagName('tbody')[0];
+		while(tbody.hasChildNodes())
+			tbody.removeChild(tbody.firstChild);
+
+		self.deleteSession();
+		self.login();			
+		self.logout();			
+		self.send();			
+		self.read();
 
 		window.setTimeout(function()
 		{
@@ -208,6 +220,6 @@ var zitalk =
 		window.setTimeout(function()
 		{
 			self.readOu();
-		}, 5 * 1000);			
-	}
+		}, 5 * 1000);
+	}	
 };

@@ -205,6 +205,7 @@ class zitalk
 			$max = $this->maxId($this->CONFIGDB['TABLE'], $this->CONFIGDB['TABLE_ID'])+1;
 			$date = mktime(date("H"), date("i"), date("s"), date("m"), date("d"), date("Y"));
 
+			$data = preg_replace("/'/", "\'", $data);
 			$insert = "insert into ".$this->CONFIGDB['TABLE']." (".$this->CONFIGDB['TABLE_ID'].", ".$this->CONFIGDB['TABLE_NAME'].", ".$this->CONFIGDB['TABLE_COMMENT'].", ".$this->CONFIGDB['TABLE_DATE'].") values(".$max.", '".$name."', '".$data."', ".$date.")";
 			if(trim($data)!=NULL)
 				$insert = mysql_query($insert);
