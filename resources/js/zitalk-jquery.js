@@ -126,7 +126,8 @@ var zitalk =
 					td.append(text);
 					tr.append(td);
 
-					var td = $('<td></td>');						
+					var td = $('<td></td>');	
+					td.addClass('new');
 					var text = document.createTextNode(res[i]['comment']);					
 
 					td.append(text);
@@ -134,6 +135,7 @@ var zitalk =
 
 					tbody.prepend(tr);
 				}
+				self.url();
 			}
 		});
 	},
@@ -186,6 +188,19 @@ var zitalk =
 				}, 8 * 1000);	
 			}
 		});	
+	},
+	url: function()
+	{
+		$('.new').each(function()
+		{
+			var r = $(this).text();
+			if(r.match(/(https?:\/\/[\S]+)(\s?|$)/ig))
+			{
+				r = r.replace(/(https?:\/\/[\S]+)(\s?|$)/ig, '<a href="$1" onclick="window.open(this.href); return false;">$1</a>$2');
+				$(this).empty();
+				$(this).append(r);
+			}
+		});
 	},
 	main: function()
 	{
