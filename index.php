@@ -18,9 +18,9 @@
     $zitalk->CONFIGDB = array(
             'PERSISTENCE' => true,
             'HOST' => 'localhost',
-            'USER' => 'user',
-            'PASSWD' => 'passwd',
-            'NAME' => 'DB_NAME',
+            'USER' => 'zital',
+            'PASSWD' => '62854285',
+            'NAME' => 'DB_zital_v3',
             'DB_ENGINE' => 'InnoDB',
             'DB_CHARSET' => 'utf8',
             'DB_COLLATION' => 'utf8_spanish_ci',

@@ -205,11 +205,11 @@ var zitalk =
 		window.setTimeout(function()
 		{
 			self.maxId();
-		}, 5 * 1000);
+		}, 3 * 1000);
 
 		window.setTimeout(function()
 		{
 			self.readOu();
-		}, 15 * 1000);			
+		}, 8 * 1000);			
 	}
 };

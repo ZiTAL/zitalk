@@ -9,30 +9,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <!-- Normalize for reset css -->
-	<link type="text/css" rel="stylesheet" href="resources/css/normalize.css" />	
+	<link type="text/css" rel="stylesheet" href="resources/css/normalize.css" />
 
     <!-- TUKTUK -->
     <link type="text/css" rel="stylesheet" href="resources/css/tuktuk/tuktuk.css">
+    <link type="text/css" rel="stylesheet" href="resources/css/tuktuk/tuktuk.icon.css">
+
+    <!-- theme site -->
     <link type="text/css" rel="stylesheet" href="resources/css/tuktuk/theme.site.css">
 
-    <!-- TUKTUK.WIDGETS -->
-
-    <link type="text/css" rel="stylesheet" href="resources/css/tuktuk/tuktuk.icon.css">    
 <!--    
 	<script src="http://jsconsole.com/remote.js?A023FCAD-4AA9-48A7-A7EB-4BC6FEB61688"></script>
 -->	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript" src="resources/js/zitalk-jquery.js"></script>
-<!--	
-	<script type="text/javascript" src="resources/js/zajax.js"></script>
-	<script type="text/javascript" src="resources/js/zitalk.js"></script>
--->	
-	
+	<script type="text/javascript" src="resources/js/zitalk-jquery.js"></script>	
 	<script type="text/javascript">
 	$(window).on('load', function()
 	{
 		zitalk.main();	
 	});
+	</script>
+<!--	
+	<script type="text/javascript" src="resources/js/zajax.js"></script>
+	<script type="text/javascript" src="resources/js/zitalk.js"></script>
+	<script type="text/javascript">	
 /*
 	window.onload = function()
 	{
@@ -40,13 +40,17 @@
 	};
 */
 	</script>
+-->	
 </head>
 <body>
 	<!-- ========================== HEADER ========================== -->
+	<!--
 	<header class="margin_top margin_bottom">
+	-->
+	<header>
 		<div class="row">
 			<div class="column_12">
-				<h2 class="text color theme"><span class="text bold">zital</span>k</h2>
+				<h4 class="text color theme"><span class="text bold">zital</span>k</h4>
 			</div>
 		</div>
 	</header>
