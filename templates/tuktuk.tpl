@@ -18,7 +18,9 @@
     <!-- TUKTUK.WIDGETS -->
 
     <link type="text/css" rel="stylesheet" href="resources/css/tuktuk/tuktuk.icon.css">    
+<!--    
 	<script src="http://jsconsole.com/remote.js?A023FCAD-4AA9-48A7-A7EB-4BC6FEB61688"></script>
+-->	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="resources/js/zitalk-jquery.js"></script>
 <!--	
