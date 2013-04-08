@@ -200,6 +200,7 @@ var zitalk =
 				$(this).empty();
 				$(this).append(r);
 			}
+			$(this).removeClass('new');
 		});
 	},
 	main: function()
