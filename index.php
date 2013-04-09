@@ -6,7 +6,7 @@
     $zitalk->CONFIG = array(
             'LANG' => 'eu',                 // html lang
             'AMOUNT' => 20,                 // amount of messages
-            'DELETE_RATE' => 20,            // Time to delete online users 
+            'DELETE_RATE' => 10,            // Time to delete online users 
             'TIME_FORMAT' => 'H:i:s',       // Time format
             'DATE_FORMAT' => 'Y/m/d',       // Date format
             'TEXT2LINK' => true,            // Change text links to valid l
@@ -18,9 +18,9 @@
     $zitalk->CONFIGDB = array(
             'PERSISTENCE' => true,
             'HOST' => 'localhost',
-            'USER' => 'zital',
-            'PASSWD' => '62854285',
-            'NAME' => 'DB_zital_v3',
+            'USER' => 'user',
+            'PASSWD' => 'passwd',
+            'NAME' => 'DB_name',
             'DB_ENGINE' => 'InnoDB',
             'DB_CHARSET' => 'utf8',
             'DB_COLLATION' => 'utf8_spanish_ci',

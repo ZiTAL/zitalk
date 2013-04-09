@@ -16,6 +16,8 @@ var zitalk =
 	},
 	login: function()
 	{
+		var self = this;
+
 		$('.login button').on('click', function(e)
 		{
 			e.preventDefault();
@@ -32,6 +34,7 @@ var zitalk =
 				},
 				success: function(res)
 				{
+					self.readOu();
 					if(res=='true')
 					{
 						$('.login').hide();
@@ -47,6 +50,7 @@ var zitalk =
 	},
 	logout: function()
 	{
+		var self = this;
 		$('.message .logout').on('click', function(e)
 		{
 			e.preventDefault();	
@@ -62,6 +66,7 @@ var zitalk =
 				},
 				success: function()
 				{
+					self.readOu();
 					$('.message').hide();
 					$('.message input').val('');
 					$('.login').show();
@@ -135,7 +140,7 @@ var zitalk =
 
 					tbody.prepend(tr);
 				}
-				self.url();
+					self.url();
 			}
 		});
 	},
@@ -175,13 +180,22 @@ var zitalk =
 		{
 			async: false,
 			type: 'POST',
+			dataType: 'json',
 			url: "?"+Math.random()+"="+Math.random(),
 			data:
 			{
 				action: 'readOu'
 			},
-			success: function()
+			success: function(res)
 			{
+				var online_users = $('.online_users .bold');
+				online_users.empty();
+				for(var i in res)
+				{
+					if(i<0)
+						online_users.append(',');
+					online_users.append(res[i]);
+				}				
 				window.setTimeout(function()
 				{
 					self.readOu();
@@ -218,15 +232,7 @@ var zitalk =
 		this.logout();			
 		this.send();			
 		this.read();
-
-		window.setTimeout(function()
-		{
-			self.maxId();
-		}, 3 * 1000);
-
-		window.setTimeout(function()
-		{
-			self.readOu();
-		}, 8 * 1000);			
+		self.readOu();
+		self.maxId();
 	}
 };

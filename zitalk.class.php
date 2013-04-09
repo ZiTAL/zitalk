@@ -274,9 +274,13 @@ class zitalk
 		$this->deleteOUsers();
 
 		$result = array();
+
+		$select = "select distinct(".$this->CONFIGDB['TABLE_OU_NAME'].") from ".$this->CONFIGDB['TABLE_OU']." order by ".$this->CONFIGDB['TABLE_OU_NAME']." asc";
+		$select = mysql_query($select);
+		
 		while($row = @mysql_fetch_array($select, MYSQL_ASSOC))
 		{
-			$result[] = $row;
+			$result[] = $row['name'];
 		}
 		echo json_encode($result);
 		exit();

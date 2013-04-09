@@ -90,6 +90,15 @@
 			</div>						
 		</div>
 	</section>
+	<!-- ONLINE USERS -->
+	<section class="padding bck light online_users">
+		<div class="row">
+			<div class="column_12">
+				<span>Online users: </span>
+				<span class="text bold">&nbsp;</span>
+			</div>			
+		</div>
+	</section>
 
 	<!-- MESSAGE LIST -->
 	<section class="padding bck lightest">
