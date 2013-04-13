@@ -168,7 +168,7 @@ var zitalk =
 				window.setTimeout(function()
 				{
 					self.maxId();
-				}, 3 * 1000);
+				}, 5 * 1000);
 			}
 		});
 	},
@@ -199,7 +199,7 @@ var zitalk =
 				window.setTimeout(function()
 				{
 					self.readOu();
-				}, 8 * 1000);	
+				}, 15 * 1000);	
 			}
 		});	
 	},
