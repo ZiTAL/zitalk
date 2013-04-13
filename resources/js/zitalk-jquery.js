@@ -5,7 +5,7 @@ var zitalk =
 	{
 		$.ajax(
 		{
-			async: false,
+//			async: false,
 			type: 'POST',
 			url: "?"+Math.random()+"="+Math.random(),
 			data:
@@ -24,7 +24,7 @@ var zitalk =
 			var data = $('.login input').val();
 			$.ajax(
 			{
-				async: false,
+//				async: false,
 				type: 'POST',
 				url: "?"+Math.random()+"="+Math.random(),
 				data:
@@ -57,7 +57,7 @@ var zitalk =
 			var input = $('.message input');
 			$.ajax(
 			{
-				async: false,
+//				async: false,
 				type: 'POST',
 				url: "?"+Math.random()+"="+Math.random(),
 				data:
@@ -83,7 +83,7 @@ var zitalk =
 			var input = $('.message input');
 			$.ajax(
 			{
-				async: false,
+//				async: false,
 				type: 'POST',
 				url: "?"+Math.random()+"="+Math.random(),
 				data:
@@ -107,7 +107,7 @@ var zitalk =
 			id = 0;
 		$.ajax(
 		{
-			async: false,
+//			async: false,
 			type: 'POST',
 			dataType: 'json',
 			url: "?"+Math.random()+"="+Math.random(),
@@ -150,7 +150,7 @@ var zitalk =
 
 		$.ajax(
 		{
-			async: false,
+//			async: false,
 			type: 'POST',
 			url: "?"+Math.random()+"="+Math.random(),
 			data:
@@ -178,7 +178,7 @@ var zitalk =
 
 		$.ajax(
 		{
-			async: false,
+//			async: false,
 			type: 'POST',
 			dataType: 'json',
 			url: "?"+Math.random()+"="+Math.random(),
