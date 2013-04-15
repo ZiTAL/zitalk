@@ -192,8 +192,8 @@ var zitalk =
 				online_users.empty();
 				for(var i in res)
 				{
-					if(i<0)
-						online_users.append(',');
+					if(i>0)
+						online_users.append(', ');
 					online_users.append(res[i]);
 				}				
 				window.setTimeout(function()
