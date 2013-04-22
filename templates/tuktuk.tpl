@@ -13,10 +13,13 @@
 
     <!-- TUKTUK -->
     <link type="text/css" rel="stylesheet" href="resources/css/tuktuk/tuktuk.css">
-    <link type="text/css" rel="stylesheet" href="resources/css/tuktuk/tuktuk.icon.css">
+    <link type="text/css" rel="stylesheet" href="resources/css/tuktuk/tuktuk.icons	.css">
 
     <!-- theme site -->
+    <!--
     <link type="text/css" rel="stylesheet" href="resources/css/tuktuk/theme.site.css">
+	-->
+    <link type="text/css" rel="stylesheet" href="resources/css/tuktuk/tuktuk.theme.css">
 
 <!--    
 	<script src="http://jsconsole.com/remote.js?A023FCAD-4AA9-48A7-A7EB-4BC6FEB61688"></script>
@@ -47,7 +50,7 @@
 	<!--
 	<header class="margin_top margin_bottom">
 	-->
-	<header>
+	<header class="center">
 		<div class="row">
 			<div class="column_12">
 				<h4 class="text color theme"><span class="text bold">zital</span>k</h4>
@@ -56,13 +59,15 @@
 	</header>
 
 	<!-- LOGIN -->
-	<section class="padding bck light login">
+	<section class="bck light center login">
 		<div class="row">
 			<div class="column_12">
 				<div id="stylized-form">
 					<form>
-						<input type="text" />
-						<button class="margin_right anchor">Login</button>
+						<fieldset>
+							<input type="text" />
+							<button class="margin_right anchor">Login</button>
+						</fieldset>
 					</form>
 				</div>
 			</div>			
@@ -70,7 +75,7 @@
 	</section>	
 
 	<!-- POST MESSAGE -->
-	<section class="padding bck light message" style="display: none">
+	<section class="bck center light margin-bottom message" style="display: none">
 		<div class="row">
 			<div class="column_10">
 				<span></span>
@@ -83,15 +88,33 @@
 			<div class="column_12">
 				<div id="stylized-form">
 					<form>
-						<input type="text" />
-						<button class="margin_right anchor send">Send</button>
+						<fieldset>
+							<input type="text" />
+							<button class="margin_right anchor send">Send</button>
+						</fieldset>
 					</form>
 				</div>
 			</div>						
 		</div>
 	</section>
+
+	<!-- SEARCH -->
+	<!--
+	<section class="padding bck light search">
+		<div class="row">
+			<form>
+			<div class="column_8">
+				<input type="text" />
+			</div>							
+			<div class="column_4">
+				<button class="secondary anchor search">search</button>
+			</div>
+			</form>							
+		</div>
+	</section>	
+	-->
 	<!-- ONLINE USERS -->
-	<section class="padding bck light online_users">
+	<section class="bck lightest center online_users">
 		<div class="row">
 			<div class="column_12">
 				<span>Online users: </span>
@@ -101,7 +124,7 @@
 	</section>
 
 	<!-- MESSAGE LIST -->
-	<section class="padding bck lightest">
+	<section class="bck center lightest">
 		<div class="row">
             <div class="column_12">
                 <table>
