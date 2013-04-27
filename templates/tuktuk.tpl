@@ -50,18 +50,18 @@
 	<!--
 	<header class="margin_top margin_bottom">
 	-->
-	<header class="center">
+	<header>
 		<div class="row">
-			<div class="column_12">
+			<div class="column_10 center">
 				<h4 class="text color theme"><span class="text bold">zital</span>k</h4>
 			</div>
 		</div>
 	</header>
 
 	<!-- LOGIN -->
-	<section class="bck light center login">
+	<section class="bck light login">
 		<div class="row">
-			<div class="column_12">
+			<div class="column_10 center">
 				<div id="stylized-form">
 					<form>
 						<fieldset>
@@ -77,15 +77,15 @@
 	<!-- POST MESSAGE -->
 	<section class="bck center light margin-bottom message" style="display: none">
 		<div class="row">
-			<div class="column_10">
+			<div class="column_5 center">
 				<span></span>
 			</div>							
-			<div class="column_2">
+			<div class="column_5 center">
 				<button class="secondary anchor logout"><span class="icon cancel"></span>Logout</button>
 			</div>							
 		</div>
 		<div class="row">
-			<div class="column_12">
+			<div class="column_10">
 				<div id="stylized-form">
 					<form>
 						<fieldset>
@@ -116,7 +116,7 @@
 	<!-- ONLINE USERS -->
 	<section class="bck lightest center online_users">
 		<div class="row">
-			<div class="column_12">
+			<div class="column_10">
 				<span>Online users: </span>
 				<span class="text bold">&nbsp;</span>
 			</div>			
@@ -126,7 +126,7 @@
 	<!-- MESSAGE LIST -->
 	<section class="bck center lightest">
 		<div class="row">
-            <div class="column_12">
+            <div class="column_10">
                 <table>
                     <thead>
                         <tr>
@@ -146,7 +146,7 @@
 	</section>
 	<section class="padding bck light">
 		<div class="row">
-			<div class="column_12">
+			<div class="column_10">
 				<pre><?php echo file_get_contents('README.md'); ?>
 				</pre>
 			</div>

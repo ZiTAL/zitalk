@@ -140,7 +140,7 @@ var zitalk =
 
 					tbody.prepend(tr);
 				}
-					self.url();
+				self.url();
 			}
 		});
 	},
@@ -217,6 +217,33 @@ var zitalk =
 			$(this).removeClass('new');
 		});
 	},
+	search: function()
+	{
+		var self = this;
+
+		$('.search button').on('click', function(e)
+		{
+			e.preventDefault();
+
+			var input = $('.search input');
+			$.ajax(
+			{
+	//			async: false,
+				type: 'POST',
+				dataType: 'json',				
+				url: "?"+Math.random()+"="+Math.random(),
+				data:
+				{
+					action: 'search',
+					data: input.val()
+				},
+				success: function(res)
+				{
+					console.log(res);
+				}
+			});
+		});
+	},
 	main: function()
 	{
 		var self = this;
@@ -234,5 +261,6 @@ var zitalk =
 		this.read();
 		self.readOu();
 		self.maxId();
+		self.search();
 	}
 };

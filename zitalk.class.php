@@ -129,7 +129,11 @@ class zitalk
 			case 'mail':
 				$this->sendMail($reqVars['data']);
 				exit();
-				break;				
+				break;
+			case 'search':
+				$this->search($reqVars['data']);
+				exit();
+				break;
 		}
 	}
 	
@@ -522,6 +526,19 @@ class zitalk
 		else
 			echo 'ok';	
 		unset($libs, $mail, $data);
+	}
+
+	private function search($data)
+	{
+		$select = "select * from ".$this->CONFIGDB['TABLE']." where ".$this->CONFIGDB['TABLE_COMMENT']." like \"%".$data."%\" order by id desc";
+		$select = mysql_query($select);
+
+		$result = array();	
+		while($row = @mysql_fetch_array($select, MYSQL_ASSOC))
+		{
+			$result[] = $row['name'];
+		}
+		echo json_encode($result);
 	}
 }
 ?>
